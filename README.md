@@ -8,7 +8,7 @@ No final, lhe daremos retorno sobre os pontos que achamos positivos e negativos.
 
 A Yungas usa um stack de transição e híbrido com Flask/Jinja/JQuery e módulos mais atuais onde o frontend é Svelte com chamadas REST. Não tem problema não estar familiarizado com Svelte se você for frontend, se você teve experiência com Vue ou React, Svelte será moleza pra você.
 
-Para este desafio, recomendamos que utilize o stack Flask+Svelte, e que evite utilizar bibliotecas de componentes - afinal, queremos ver o seu código e a sua maneira de resolver problemas.
+Para este desafio, recomendamos que utilize o stack Flask+Svelte (especialmente o Flask). No front, preferimos que evite utilizar bibliotecas de componentes - afinal, queremos ver o seu código e a sua maneira de resolver problemas.
 
 **Tenha certeza de que seu código foi testado (inclusive testes automatizados vão lhe dar pontos extras) e está pronto para rodar!**
 
