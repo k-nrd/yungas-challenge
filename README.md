@@ -68,8 +68,6 @@ Temos requerimentos de diferentes níveis para devs com diferentes níveis de ex
     - Um menu com a lista de salas.
     - Uma lista de mensagens.
     - Uma área para digitar mensagens, com um botão para enviar mensagens.
-    - Um botão para enviar mensagens.
-    - Uma mensagem (própria ou de outro).
   - Utilizar os componentes para montar o chat.
   - Emitir ao back-end um evento `connected` quando entrar na sala.
   - Emitir ao back-end um evento `disconnected` quando sair da sala.
