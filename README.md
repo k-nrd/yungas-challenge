@@ -66,7 +66,7 @@ Temos requerimentos de diferentes níveis para devs com diferentes níveis de ex
   - Implementar, de maneira componentizada:
     - Um menu com a lista de usuários ativos.
     - Um menu com a lista de salas.
-    - Uma lista de mensagens.
+    - Uma lista de mensagens (a parte principal de um chat, haha).
     - Uma área para digitar mensagens, com um botão para enviar mensagens.
   - Utilizar os componentes para montar o chat.
   - Emitir ao back-end um evento `connected` quando entrar na sala.
