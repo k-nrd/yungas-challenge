@@ -6,162 +6,107 @@ A forma como você resolverá este desafio é importante para entendermos seus p
 
 No final, lhe daremos retorno sobre os pontos que achamos positivos e negativos.
 
-A Yungas usa um stack de transição e híbrido com Flask/Jinja/JQuery e módulos mais atuais onde o frontend é Svelte com chamadas REST. Não tem problema não estar familiarizado com Svelte se você for frontend, se você teve experiência com Vue ou React, Svelte será moleza pra você.
+A Yungas usa um stack de transição com back-end em Flask e:
+- front-end em Jinja+jQuery nos módulos mais antigos;
+- front-end Svelte nos módulos mais novos. 
 
-Para este desafio, recomendamos que utilize o stack Flask+Svelte (especialmente o Flask). No front, preferimos que evite utilizar bibliotecas de componentes - afinal, queremos ver o seu código e a sua maneira de resolver problemas.
+Familiaridade com Svelte não é um requerimento, mas um diferencial. Se você teve experiência com Vue ou React, Svelte será moleza pra você.
 
-**Tenha certeza de que seu código foi testado (inclusive testes automatizados vão lhe dar pontos extras) e está pronto para rodar!**
+Para este desafio, recomendamos que utilize para o back-end Flask, FastAPI, Sanic ou Quartz. No front-end, utilize Svelte, React+Redux ou Vue. 
+*Evite usar Django* (é um ótimo framework, mas tem pouco a ver com a nossa base de código).
+*Evite usar Angular ou outro framework* (Svelte é o que você vai lidar no dia-a-dia, React+Redux e Vue são razoavelmente similares)
 
-Consideramos diferenciais (positivos):
-- Projetos organizados.
-- Código limpo.
-- Composition over inheritance.
+Preferimos *fortemente* que evite utilizar componentes prontos - afinal, queremos ver o seu código e a sua maneira de resolver problemas.
+
+Nice-to-have (não é "tudo ou nada", faça o que conseguir!):
+- Containerização.
+- Testes unitários.
+- Testes de integração.
 - Declarativo sobre imperativo.
-- Caso sênior, comentários (pode ser no README) sobre como faria deploy deste app (configs, adições ao stack, etc). Quanto mais detalhes, melhor!
+- Composition over inheritance.
+- Comentários (pode ser no README) sobre como faria deploy deste app. Como lidaria com:
+  - Configs?
+  - Secrets?
+  - Logs?
+  - Quanto mais detalhes, melhor!
+- Deploy deste app na AWS ou Heroku (mas não precisa gastar dinheiro!).
+
+Must-have:
+- Projeto organizado.
+- Código limpo.
+- Front-end com componentes simples e reutilizáveis.
+- Back-end com estrutura clara e responsabilidades bem definidas.
 
 ---
 
-# BACKEND
+## O DESAFIO
 
-Seu desafio no backend será criar uma API que listará pessoas de uma base de dados.
+Seu desafio será criar um sala de chat em tempo real. Para isso, use websockets ou um protocolo similar como socket.io. Quando estiver em dúvida sobre estilização ou estética em geral, use WhatsApp ou Telegram como referências - ambos possuem interfaces simples e intuitivas (sem exagero! Não precisamos de foto de perfil ou fundos customizáveis, haha).
 
-Neste repositório você encontrará o arquivo **people.json**. Você deve usar este arquivo como sua base de dados importando-o para um banco de dados, para uma variável, tanto faz. O importante é que isto ocorra durante a inicialização do seu projeto.
+Temos requerimentos de diferentes níveis para devs com diferentes níveis de experiência. Mesmo se for experiente, não pule níveis. Tente finalizar um nível antes de seguir ao próximo.
 
-Exemplo do JSON:
-```
-{"gender":"male","name":{"title":"mr","first":"antonelo","last":"da conceição"},"location":{"street":"8986 rua rui barbosa ","city":"santo andré","state":"alagoas","postcode":40751,"coordinates":{"latitude":"-69.8704","longitude":"-165.9545"},"timezone":{"offset":"+1:00","description":"Brussels, Copenhagen, Madrid, Paris"}},"email":"antonelo.daconceição@example.com","dob":{"date":"1956-02-12T10:38:37Z","age":62},"registered":{"date":"2005-12-05T15:22:53Z","age":13},"phone":"(85) 8747-8125","cell":"(87) 2414-0993","picture":{"large":"https://randomuser.me/api/portraits/men/8.jpg","medium":"https://randomuser.me/api/portraits/med/men/8.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/men/8.jpg"}}
-```
-
-## Especificações da API
-
-### Requisito #1
-
-A API deve sempre responder com paginação e todas as saídas da API devem ser padronizadas no seguinte formato:
-
-```
-{
-  page: X,
-  page_size: Y,
-  total_items: T,
-  items: [ ... ]
-}
-```
-
-Ou seja, todos os endpoints de sua API devem aceitar os parâmetros **page** e **page_size** e formatar a saída de acordo, informando que página esta sendo exibida, qual é o número máximo de itens por página e o número total na base de dados.
+Os requerimentos mínimos são:
+- Back-end:
+  - Implementar rotas de websocket ou socket.io.
+  - Definir uma sala de chat padrão (pode chamar de Sala 1).
+  - Usuários devem entrar na sala de chat com o username que escolherem.
+  - Enviar ao usuário que entrou na sala uma lista dos usuários presentes na sala.
+  - Recusar mensagens enviadas por usuários que não estão na sala.
+  - Emitir eventos para todos os usuários da sala (fazer um broadcast) quando usuários entrarem na sala.
+  - Fazer um broadcast quando receber mensagens de usuários da sala.
+  - Fazer um broadcast quando um usuário da sala estiver digitando.
+  - Fazer um broadcast quando um usuário da sala que estava digitando parar de digitar.
+  - Fazer um broadcast quando um usuário da sala sair da sala.
+- Front-end:
+  - Pedir ao usuário um username para que ele possa entrar na sala.
+  - Emitir ao back-end um evento `connected` quando entrar na sala.
+  - Emitir ao back-end um evento `message` ao enviar uma mensagem (pode ser via clique em um botão escrito `Enviar`, por exemplo).
+  - Quando receber um evento `connected` do back-end, mostrar ou atualizar uma lista de usuários ativos na sala.
+  - Quando receber um evento `message`, mostrar no chat a mensagem recebida (diferenciar mensagens próprias de uma mensagem de outro usuário).
 
 
-### Requisito #2
+Requerimentos intermediários são:
+- Back-end:
+  - Definir mais salas (Sala 2 e Sala 3, por exemplo).
+  - Usuários só podem estar em uma sala por vez.
+  - Usuários que estão em uma sala não podem ver mensagens de outras salas.
+  - Emitir ao back-end um evento `typing` quando começar a digitar uma mensagem.
+  - Emitir ao back-end um evento `stop-typing` quando parar de digitar.
+- Front-end:
+  - Implementar alguma maneira de trocar de salas (pode ser em abas ou menus laterais).
+  - Implementar interface para login ou registro do usuário (antes de entrar em uma sala).
+  - Mensagens das salas *não devem aparecer* para usuários não-autenticados.
+  - Mostre as informações extras do usuário (nome e email) em algum lugar da tela (um modal que abre ao clicar no usuário na lista, por exemplo).
+  - Quando receber um evento `typing`, mostrar em algum lugar na tela qual usuário está digitando (algo como `João is typing...`).
+  - Quando receber um evento `stop-typing`, parar de mostrar que aquele usuário está digitando (se João parar de digitar, mas Pedro continua digitando, mostrar `Pedro is typing...`).
 
-Você notará que todos os usuários de sua base de dados estão localizados em estados brasileiros e os usuários de sua API precisam listá-los por região. Faça com que sua API possua rotas onde o usuário possa passar a região e receber a lista filtrada de usuários daquela região: Lembrando que as regiões disponíveis serão:
-- Norte
-- Nordeste
-- Centro-Oeste
-- Sudeste
-- Sul
+Requerimentos avançados são:
+- Back-end:
+  - Faça com que o usuário se registre ou faça login para entrar em uma sala.
+  - A autenticação pode ser implementada da maneira que preferir (JWT, Basic Auth, etc). Procure usar uma library popular para o framework que escolheu.
+  - `nome`, `username`, `senha` (encriptada, claro) e `email` devem ser persistidos em um banco de dados SQLite.
+  - Implementar sessões, de tal maneira que o usuário não precise refazer o login quando der um refresh ou fechar e abrir a aba.
+  - A implementação das sessões, assim como da autenticação, fica a seu critério (pode usar uma library que faça ambos).
+  - Implementar uma rota HTTP POST `/upload`, que deve:
+    - Receber arquivos via FormData (o texto da mensagem ainda deve ir via socket, mas deve esperar o envio dos arquivos).
+    - Salvar os arquivos em uma pasta local `/tmp`.
+    - Retornar links para esses arquivos (o backend deve servir esses arquivos em `/static/<NOME-DO-ARQUIVO>`).
+    - Obs.: No caso de mais de um arquivo, lembre de retornar um array de links.
+- Front-end:
+  - Ajustar a interface para permitir que arquivos sejam enviados (pode ser um botão `Anexar` ao lado de `Enviar`, por exemplo).
+  - Enviar os arquivos via POST para `/upload` (não envie o texto da mensagem!).
+  - Uma vez que os arquivos sejam enviados, envie junto do texto da mensagem o array de links que recebeu na response.
+    - Obs.: Se a mensagem antes era uma string, alterar para algo como `{ text: 'blabla', images: ['/static/foo.png'], files: ['/static/bar.zip'] }` pode ajudar no próximo passo.
+  - Utilizar o array de links para gerar previews dos arquivos enviados (caso sejam imagens, mostrar uma `<img>` pequena, caso contrário algum ícone ou placeholder de sua escolha).
 
+## Como entregar
 
-### Requisito #3
-
-Você sabe que sua API fará muito sucesso em breve e você vai atingir fama internacional. Pensando nisto, você já está adaptando a saída da API para algo mais genérico para o mercado internacional. Para melhorar a saída da API você precisa:
-
-1. Os números de telefone devem estar no formato [E.164](https://en.wikipedia.org/wiki/E.164). Por exemplo, (44) 4422-3311 será convertido para +554444223311.
-2. Inserir a nacionalidade. Como todos os clientes ainda são do Brasil, o valor padrão será BR.
-3. Alterar o valor do campo `gender` para `F` ou `M` em vez de `female` ou `male`.
-4. Retirar o campo `age` de `dob` e `registered`.
-5. Alterar estrutura para simplificar leitura e usar arrays em campos específicos (ver exemplo abaixo)
-
-Exemplo de OUTPUT:
-
-```
-{
-  "gender": "m",
-  "name": {
-    "title": "mr",
-    "first": "quirilo",
-    "last": "nascimento"
-  },
-  "location": {
-    "region": "sul"
-    "street": "680 rua treze ",
-    "city": "varginha",
-    "state": "paraná",
-    "postcode": 37260,
-    "coordinates": {
-      "latitude": "-46.9519",
-      "longitude": "-57.4496"
-    },
-    "timezone": {
-      "offset": "+8:00",
-      "description": "Beijing, Perth, Singapore, Hong Kong"
-    }
-  },
-  "email": "quirilo.nascimento@example.com",
-  "birthday": "1979-01-22T03:35:31Z",
-  "registered": "2005-07-01T13:52:48Z",
-  "telephoneNumbers": [
-    "+556629637520"
-  ],
-  "mobileNumbers": [
-    "+553270684089"
-  ],
-  "picture": {
-    "large": "https://randomuser.me/api/portraits/men/83.jpg",
-    "medium": "https://randomuser.me/api/portraits/med/men/83.jpg",
-    "thumbnail": "https://randomuser.me/api/portraits/thumb/men/83.jpg"
-  },
-  "nationality": "BR"
-}
-
-```
-**Os dados devem ser armazenados conforme o contrato de OUTPUT também.**
-
----
-
-# FRONTEND
-Já no frontend, seu desafio é exibir os dados da API criada.
-
-Neste repositório, você encontrará um arquivo chamado **people.json**. Ele será sua base de dados. Faça um mock de uma API e receba os dados através dela. Com os dados, você deve atender os requisitos abaixo.
-
-### Requisito #1
-
-Você deve criar uma interface que liste todos os registros. Esta interface deve conter formas de filtragem e organização dos dados como:
-- filtros por partes dos dados, como nome, endereco, cidade, etc.
-- organizacao dos registros por ordem alfabetica ou inversa.
-- o estado default da tela é lista completa, sem filtragens.
-
-### Requisito #2
-
-Você notará que todos os usuários de sua base de dados estão localizados em estados brasileiros mas na sua interface, precisamos listá-los por região. Crie também um filtro com um SELECT onde se possa selecionar as regiões abaixo e filtrar os registros listando apenas estados pertencentes aquela regiao
-- Norte
-- Nordeste
-- Centro-Oeste
-- Sudeste
-- Sul
-
-### Requisito #3
-
-A sua interface precisa listar no máximo 20 usuários por vez, possuir paginação e identificar quando é necessário exibir os controles de paginação. A paginação deve conter botões para ir para a primeira ou última página, avançar ou retroceder uma página e também um local onde o usuário pode digitar diretamente a página que ele quer exibir.
-
-### Requisito #4
-
-Sua interface deve ser responsiva.
-
-### Requisito #5 
-
-Seus filtros devem ser INCREMENTAIS, ou seja, se você filtrar por "Joao" e região "Sul", somente os "Joao" da região "Sul" devem ser exibidos. Se outro filtro for adicionado a busca, ele também precisa incrementar a pesquisa.
-
-### Requisito #6
-
-Ao clicar em uma pessoa da listagem, esta pessoa deve ser exibida em um modal com mais detalhes. Pontos aqui se você for mais criativo e não usar um modal, apresentando os dados de outra forma e que tenha uma boa UX.
-
-# Como entregar
-
-Crie seu repositório no Github e o mantenha como **privado**!!
+Crie um repositório no Github. O repositório deve ser privado enquanto não te avaliamos, mas depois da avaliação pode deixar público e utilizar para portfólio se quiser!
 
 Dê permissão de acesso para [@k-onrad](https://github.com/k-onrad) ao seu repositório.
 
 É obrigatório ter um **README** com todas as instruções sobre o seu desafio.
 
-Assim que finalizar, nos avise pelo e-mail marcos@yungas.com.br para que possamos avaliar.
+Assim que finalizar, envie um link para o repositório para o e-mail `marcos@yungas.com.br`, para que possamos avaliar.
 
 ## Boa sorte!
