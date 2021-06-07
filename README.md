@@ -49,7 +49,7 @@ Seu desafio será criar um sala de chat em tempo real. Para isso, use websockets
 
 Temos requerimentos de diferentes níveis para devs com diferentes níveis de experiência. Mesmo se for experiente, não pule níveis. Tente finalizar um nível antes de seguir ao próximo. Dentro de um nível, no entanto, pode fazer os itens na ordem que preferir!
 
-Os requerimentos mínimos são:
+### Requerimentos mínimos
 - Back-end:
   - Implementar rotas de websocket ou socket.io.
   - Definir uma sala de chat padrão (pode chamar de Sala 1).
@@ -71,7 +71,7 @@ Os requerimentos mínimos são:
   - Quando receber um evento `message`, mostrar no chat a mensagem recebida (diferenciar mensagens próprias de uma mensagem de outro usuário).
 
 
-Requerimentos intermediários são:
+### Requerimentos intermediários
 - Back-end:
   - Definir mais salas (Sala 2 e Sala 3, por exemplo).
   - Usuários só podem estar em uma sala por vez.
@@ -86,7 +86,7 @@ Requerimentos intermediários são:
   - Quando receber um evento `typing`, mostrar em algum lugar na tela qual usuário está digitando (algo como `João is typing...`).
   - Quando receber um evento `stop-typing`, parar de mostrar que aquele usuário está digitando (se João parar de digitar, mas Pedro continua digitando, mostrar `Pedro is typing...`).
 
-Requerimentos avançados são:
+### Requerimentos avançados
 - Back-end:
   - Faça com que o usuário se registre ou faça login para entrar em uma sala.
   - A autenticação pode ser implementada da maneira que preferir (JWT, Basic Auth, etc). Procure usar uma library popular para o framework que escolheu.
