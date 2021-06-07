@@ -120,7 +120,7 @@ Crie um repositório no Github. O repositório deve ser privado enquanto não te
 
 Dê permissão de acesso para [@kvdos-argonaut](https://github.com/kvdos-argonaut) ao seu repositório.
 
-É obrigatório ter um **README** com todas as instruções sobre o seu desafio.
+É **obrigatório** ter um **README** com todas as instruções para rodar o seu desafio (podem ser comandos `python` e `npm`/`yarn` pra rodar o back e o front separadamente, comandos `docker` ou `docker-compose` se você containerizou o app ou até mesmo um link para o heroku/aws/host de sua preferência com o app rodando).
 
 Assim que finalizar, envie um link para o repositório para o e-mail `marcos@yungas.com.br`, para que possamos avaliar.
 
