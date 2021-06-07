@@ -63,12 +63,21 @@ Temos requerimentos de diferentes níveis para devs com diferentes níveis de ex
   - Fazer um broadcast quando um usuário da sala sair da sala.
 - Front-end:
   - Pedir ao usuário um username para que ele possa entrar na sala.
+  - Implementar, de maneira componentizada:
+    - Um menu com a lista de usuários ativos.
+    - Um menu com a lista de salas.
+    - Uma lista de mensagens.
+    - Uma área para digitar mensagens, com um botão para enviar mensagens.
+    - Um botão para enviar mensagens.
+    - Uma mensagem (própria ou de outro).
+  - Utilizar os componentes para montar o chat.
   - Emitir ao back-end um evento `connected` quando entrar na sala.
   - Emitir ao back-end um evento `disconnected` quando sair da sala.
   - Emitir ao back-end um evento `message` ao enviar uma mensagem (pode ser via clique em um botão escrito `Enviar`, por exemplo).
   - Quando receber um evento `connected` do back-end, mostrar ou atualizar uma lista de usuários ativos na sala.
   - Quando receber um evento `disconnected` do back-end, atualizar a lista de usuários ativos na sala.
-  - Quando receber um evento `message`, mostrar no chat a mensagem recebida (diferenciar mensagens próprias de uma mensagem de outro usuário).
+  - Quando receber um evento `message`, mostrar no chat a mensagem recebida (diferenciar mensagens próprias de uma mensagem de outro usuário) e fazer um auto-scroll para baixo (para que o usuário não tenha que dar scroll manualmente).
+
 
 
 ### Requerimentos intermediários
