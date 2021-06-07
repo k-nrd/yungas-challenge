@@ -123,4 +123,14 @@ Dê permissão de acesso para [@kvdos-argonaut](https://github.com/kvdos-argonau
 
 Assim que finalizar, envie um link para o repositório para o e-mail `marcos@yungas.com.br`, para que possamos avaliar.
 
+## Precisa de referências?
+Dẽ uma olhada nesses links:
+- https://flask-socketio.readthedocs.io/en/latest/getting_started.html
+- https://fastapi.tiangolo.com/advanced/websockets/
+- https://sanicframework.org/en/guide/advanced/websockets.html
+- https://svelte.dev/tutorial/basics
+- https://www.valentinog.com/blog/socket-react/
+- https://github.com/kvdos-argonaut/polka-chat
+- https://github.com/scottdomes/svelte-chat
+
 ## Boa sorte!
