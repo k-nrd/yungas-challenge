@@ -47,7 +47,7 @@ Must-have:
 
 Seu desafio será criar um sala de chat em tempo real. Para isso, use websockets ou um protocolo similar como socket.io. Quando estiver em dúvida sobre estilização ou estética em geral, use WhatsApp ou Telegram como referências - ambos possuem interfaces simples e intuitivas (sem exagero! Não precisamos de foto de perfil ou fundos customizáveis, haha).
 
-Temos requerimentos de diferentes níveis para devs com diferentes níveis de experiência. Mesmo se for experiente, não pule níveis. Tente finalizar um nível antes de seguir ao próximo.
+Temos requerimentos de diferentes níveis para devs com diferentes níveis de experiência. Mesmo se for experiente, não pule níveis. Tente finalizar um nível antes de seguir ao próximo. Dentro de um nível, no entanto, pode fazer os itens na ordem que preferir!
 
 Os requerimentos mínimos são:
 - Back-end:
