@@ -60,8 +60,10 @@ Os requerimentos mínimos são:
 - Front-end:
   - Pedir ao usuário um username para que ele possa entrar na sala.
   - Emitir ao back-end um evento `connected` quando entrar na sala.
+  - Emitir ao back-end um evento `disconnected` quando sair da sala.
   - Emitir ao back-end um evento `message` ao enviar uma mensagem (pode ser via clique em um botão escrito `Enviar`, por exemplo).
   - Quando receber um evento `connected` do back-end, mostrar ou atualizar uma lista de usuários ativos na sala.
+  - Quando receber um evento `disconnected` do back-end, atualizar a lista de usuários ativos na sala.
   - Quando receber um evento `message`, mostrar no chat a mensagem recebida (diferenciar mensagens próprias de uma mensagem de outro usuário).
 
 
