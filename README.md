@@ -12,9 +12,13 @@ A Yungas usa um stack de transição com back-end em Flask e:
 
 Familiaridade com Svelte não é um requerimento, mas um diferencial. Se você teve experiência com Vue ou React, Svelte será moleza pra você.
 
-Para este desafio, recomendamos que utilize para o back-end Flask, FastAPI, Sanic ou Quartz. No front-end, utilize Svelte, React+Redux ou Vue. 
+Para este desafio, recomendamos que utilize para o back-end Flask, FastAPI, Sanic ou Quartz.
+
+No front-end, utilize Svelte, React+Redux ou Vue. 
+
 *Evite usar Django* (é um ótimo framework, mas tem pouco a ver com a nossa base de código).
-*Evite usar Angular ou outro framework* (Svelte é o que você vai lidar no dia-a-dia, React+Redux e Vue são razoavelmente similares)
+
+*Evite usar Angular ou outro framework* (Svelte é o que você vai lidar no dia-a-dia, React+Redux e Vue são razoavelmente similares).
 
 Preferimos *fortemente* que evite utilizar componentes prontos - afinal, queremos ver o seu código e a sua maneira de resolver problemas.
 
