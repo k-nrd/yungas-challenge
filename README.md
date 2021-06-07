@@ -103,7 +103,7 @@ Requerimentos avançados são:
 
 Crie um repositório no Github. O repositório deve ser privado enquanto não te avaliamos, mas depois da avaliação pode deixar público e utilizar para portfólio se quiser!
 
-Dê permissão de acesso para [@k-onrad](https://github.com/k-onrad) ao seu repositório.
+Dê permissão de acesso para [@kvdos-argonaut](https://github.com/kvdos-argonaut) ao seu repositório.
 
 É obrigatório ter um **README** com todas as instruções sobre o seu desafio.
 
