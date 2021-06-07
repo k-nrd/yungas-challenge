@@ -107,7 +107,7 @@ Temos requerimentos de diferentes níveis para devs com diferentes níveis de ex
     - Salvar os arquivos em uma pasta local `/tmp`.
     - Retornar links para esses arquivos (o backend deve servir esses arquivos em `/static/<NOME-DO-ARQUIVO>`).
     - Obs.: No caso de mais de um arquivo, lembre de retornar um array de links.
-    - Obs2.: Arquivos podem ser pesados, e operações I/O para salvar no disco podem ser lentas - recomendamos que utilize `async` ao máximo.
+    - Obs2.: Arquivos podem demorar para serem recebidos e operações I/O para salvar no disco podem ser lentas - recomendamos que utilize `async` ao máximo.
 - Front-end:
   - Ajustar a interface para permitir que arquivos sejam enviados (pode ser um botão `Anexar` ao lado de `Enviar`, por exemplo).
   - Enviar os arquivos via POST para `/upload` (não envie o texto da mensagem!).
