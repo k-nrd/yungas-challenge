@@ -22,6 +22,12 @@ No front-end, utilize Svelte, React+Redux ou Vue.
 
 Preferimos *fortemente* que evite utilizar componentes prontos - afinal, queremos ver o seu código e a sua maneira de resolver problemas.
 
+Must-have:
+- Projeto organizado.
+- Código limpo.
+- Front-end com componentes simples e reutilizáveis.
+- Back-end com estrutura clara e responsabilidades bem definidas.
+
 Nice-to-have (não é "tudo ou nada", faça o que conseguir!):
 - Containerização.
 - Testes unitários.
@@ -34,12 +40,6 @@ Nice-to-have (não é "tudo ou nada", faça o que conseguir!):
   - Logs?
   - Quanto mais detalhes, melhor!
 - Deploy deste app na AWS ou Heroku (mas não precisa gastar dinheiro!).
-
-Must-have:
-- Projeto organizado.
-- Código limpo.
-- Front-end com componentes simples e reutilizáveis.
-- Back-end com estrutura clara e responsabilidades bem definidas.
 
 ---
 
@@ -75,8 +75,6 @@ Temos requerimentos de diferentes níveis para devs com diferentes níveis de ex
   - Quando receber um evento `connected` do back-end, mostrar ou atualizar uma lista de usuários ativos na sala.
   - Quando receber um evento `disconnected` do back-end, atualizar a lista de usuários ativos na sala.
   - Quando receber um evento `message`, mostrar no chat a mensagem recebida (diferenciar mensagens próprias de uma mensagem de outro usuário) e fazer um auto-scroll para baixo (para que o usuário não tenha que dar scroll manualmente).
-
-
 
 ### Requerimentos intermediários
 - Back-end:
