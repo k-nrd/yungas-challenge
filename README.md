@@ -2,9 +2,7 @@
 
 O objetivo deste desafio é avaliar a sua maneira de pensar e resolver os problemas propostos.
 
-A forma como você resolverá este desafio é importante para entendermos seus padrões de qualidade, organização, performance, etc. Além dos requisitos que serão citados, diversos outros serão também avaliados (mas esses são surpresa, ok?)
-
-No final, lhe daremos retorno sobre os pontos que achamos positivos e negativos.
+A forma como você resolverá este desafio é importante para entendermos seus padrões de qualidade, organização, performance, etc. No final, lhe daremos retorno sobre os pontos que achamos positivos e negativos.
 
 A Yungas usa um stack de transição com back-end em Flask e:
 - front-end em Jinja+jQuery nos módulos mais antigos;
@@ -12,15 +10,7 @@ A Yungas usa um stack de transição com back-end em Flask e:
 
 Familiaridade com Svelte não é um requerimento, mas um diferencial. Se você teve experiência com Vue ou React, Svelte será moleza pra você.
 
-Para este desafio, recomendamos que utilize para o back-end Flask, FastAPI, Sanic ou Quartz.
-
-No front-end, utilize Svelte, React+Redux ou Vue. 
-
-*Evite usar Django* (é um ótimo framework, mas tem pouco a ver com a nossa base de código).
-
-*Evite usar Angular ou outro framework* (Svelte é o que você vai lidar no dia-a-dia, React+Redux e Vue são razoavelmente similares).
-
-Preferimos *fortemente* que evite utilizar componentes prontos - afinal, queremos ver o seu código e a sua maneira de resolver problemas.
+Utilize nesse desafio os frameworks que mais dominar, mas preferimos *fortemente* que evite soluções prontas tanto no back quanto no front (Generic Views, OpenAPI codegen, libraries de componentes prontos) - afinal, queremos ver o seu código e a sua maneira de resolver problemas.
 
 Must-have:
 - Projeto organizado.
@@ -31,9 +21,9 @@ Must-have:
 Nice-to-have (não é "tudo ou nada", faça o que conseguir!):
 - Containerização.
 - Testes unitários.
-- Testes de integração.
-- Declarativo sobre imperativo.
-- Composition over inheritance.
+- Código funcional ao invés de orientado a objetos.
+- Código declarativo ao invés de imperativo.
+- Composition ao invés de inheritance.
 - Comentários (pode ser no README) sobre como faria deploy deste app. Como lidaria com:
   - Configs?
   - Secrets?
@@ -56,11 +46,11 @@ Temos requerimentos de diferentes níveis para devs com diferentes níveis de ex
   - Usuários devem entrar na sala de chat com o username que escolherem.
   - Enviar ao usuário que entrou na sala uma lista dos usuários presentes na sala.
   - Recusar mensagens enviadas por usuários que não estão na sala.
-  - Emitir eventos para todos os usuários da sala (fazer um broadcast) quando usuários entrarem na sala.
-  - Fazer um broadcast quando receber mensagens de usuários da sala.
-  - Fazer um broadcast quando um usuário da sala estiver digitando.
-  - Fazer um broadcast quando um usuário da sala que estava digitando parar de digitar.
-  - Fazer um broadcast quando um usuário da sala sair da sala.
+  - Notificar todos os outros usuários quando um usuário novo entrar na sala.
+  - Notificar todos os outros usuários quando receber mensagens de algum dos usuários da sala.
+  - Notificar todos os outros usuários quando um usuário da sala estiver digitando.
+  - Notificar todos os outros usuários quando um usuário da sala que estava digitando parar de digitar.
+  - Notificar todos os outros usuários quando um usuário da sala sair da sala.
 - Front-end:
   - Pedir ao usuário um username para que ele possa entrar na sala.
   - Implementar, de maneira componentizada:
@@ -69,27 +59,27 @@ Temos requerimentos de diferentes níveis para devs com diferentes níveis de ex
     - Uma lista de mensagens (a parte principal de um chat, haha).
     - Uma área para digitar mensagens, com um botão para enviar mensagens.
   - Utilizar os componentes para montar o chat.
-  - Emitir ao back-end um evento `connected` quando entrar na sala.
-  - Emitir ao back-end um evento `disconnected` quando sair da sala.
-  - Emitir ao back-end um evento `message` ao enviar uma mensagem (pode ser via clique em um botão escrito `Enviar`, por exemplo).
-  - Quando receber um evento `connected` do back-end, mostrar ou atualizar uma lista de usuários ativos na sala.
-  - Quando receber um evento `disconnected` do back-end, atualizar a lista de usuários ativos na sala.
-  - Quando receber um evento `message`, mostrar no chat a mensagem recebida (diferenciar mensagens próprias de uma mensagem de outro usuário) e fazer um auto-scroll para baixo (para que o usuário não tenha que dar scroll manualmente).
+  - Notificar ao back-end quando entrar na sala.
+  - Notificar ao back-end quando sair da sala.
+  - Notificar ao back-end ao enviar uma mensagem (pode ser via clique em um botão escrito `Enviar`, por exemplo).
+  - Quando for notificado pelo back-end, mostrar ou atualizar uma lista de usuários ativos na sala.
+  - Quando for notificado pelo back-end, atualizar a lista de usuários ativos na sala.
+  - Quando for notificado pelo back-end, mostrar no chat a mensagem recebida (diferenciar mensagens próprias de uma mensagem de outro usuário) e fazer um auto-scroll para baixo (para que o usuário não tenha que dar scroll manualmente).
 
 ### Requerimentos intermediários
 - Back-end:
   - Definir mais salas (Sala 2 e Sala 3, por exemplo).
   - Usuários só podem estar em uma sala por vez.
   - Usuários que estão em uma sala não podem ver mensagens de outras salas.
-  - Emitir ao back-end um evento `typing` quando começar a digitar uma mensagem.
-  - Emitir ao back-end um evento `stop-typing` quando parar de digitar.
+  - Notificar todos os outros usuários da sala quando um usuário da sala começar a digitar uma mensagem.
+  - Notificar todos os outros usuários da sala quando um usuário da sala parar de digitar.
 - Front-end:
   - Implementar alguma maneira de trocar de salas (pode ser em abas ou menus laterais).
   - Implementar interface para login ou registro do usuário (antes de entrar em uma sala).
   - Mensagens das salas *não devem aparecer* para usuários não-autenticados.
   - Mostre as informações extras do usuário (nome e email) em algum lugar da tela (um modal que abre ao clicar no usuário na lista, por exemplo).
-  - Quando receber um evento `typing`, mostrar em algum lugar na tela qual usuário está digitando (algo como `João is typing...`).
-  - Quando receber um evento `stop-typing`, parar de mostrar que aquele usuário está digitando (se João parar de digitar, mas Pedro continua digitando, mostrar `Pedro is typing...`).
+  - Quando for notificado pelo back-end, mostrar em algum lugar na tela qual usuário está digitando (algo como `João is typing...`).
+  - Quando for notificado pelo back-end, parar de mostrar que aquele usuário está digitando (se João parar de digitar, mas Pedro continua digitando, mostrar `Pedro is typing...`).
 
 ### Requerimentos avançados
 - Back-end:
@@ -98,7 +88,7 @@ Temos requerimentos de diferentes níveis para devs com diferentes níveis de ex
   - `nome`, `username`, `senha` (encriptada, claro) e `email` devem ser persistidos em um banco de dados SQLite.
   - Implementar sessões, de tal maneira que o usuário não precise refazer o login quando der um refresh ou fechar e abrir a aba.
   - A implementação das sessões, assim como da autenticação, fica a seu critério (pode usar uma library que faça ambos).
-  - Implementar uma rota HTTP POST `/upload`, que deve:
+  - Implementar uma rota HTTP que deve:
     - Receber arquivos via FormData (o texto da mensagem ainda deve ir via socket, mas deve esperar o envio dos arquivos).
     - Salvar os arquivos em uma pasta local `/tmp`.
     - Retornar links para esses arquivos (o backend deve servir esses arquivos em `/static/<NOME-DO-ARQUIVO>`).
@@ -106,7 +96,7 @@ Temos requerimentos de diferentes níveis para devs com diferentes níveis de ex
     - Obs2.: Arquivos podem demorar para serem recebidos e operações I/O para salvar no disco podem ser lentas - recomendamos que utilize `async` ao máximo.
 - Front-end:
   - Ajustar a interface para permitir que arquivos sejam enviados (pode ser um botão `Anexar` ao lado de `Enviar`, por exemplo).
-  - Enviar os arquivos via POST para `/upload` (não envie o texto da mensagem!).
+  - Enviar os arquivos via para a rota de upload (não envie o texto da mensagem!).
   - Uma vez que os arquivos sejam enviados, envie junto do texto da mensagem o array de links que recebeu na response.
     - Obs.: Se a mensagem antes era uma string, alterar para algo como `{ text: 'blabla', images: ['/static/foo.png'], files: ['/static/bar.zip'] }` pode ajudar no próximo passo.
   - Utilizar o array de links para gerar previews dos arquivos enviados (caso sejam imagens, mostrar uma `<img>` pequena, caso contrário algum ícone ou placeholder de sua escolha).
